@@ -1,0 +1,20 @@
+<?php add_shortcode( 'subscriber-login', 'subscriber_login_func' );
+add_shortcode( 'subscriber-register', 'subscriber_register_func' ); 
+add_action('wp_footer', 'proceed_with_js');
+add_action('init', 'subscribe_login_proceed');
+add_action('init', 'request_post_type');
+add_filter( 'post_row_actions', 'modify_list_row_actions', 10, 2 );
+add_filter( 'manage_coupon_request_posts_columns', 'set_custom_edit_coupon_request_columns' );
+add_action('admin_menu', 'disable_new_posts');
+add_action('init', 'home_page_coupon_process');
+add_action( 'manage_coupon_request_posts_custom_column' , 'custom_book_column', 10, 2 );
+add_action('admin_footer', 'proceed_with_js_second');
+add_action('admin_footer', 'proceed_with_css_second');
+add_action('admin_footer', 'admin_coupon_select_popup'); 
+add_action( 'wp_ajax_coupon_email_customer', 'coupon_email_customer_fun' );
+add_action( 'wp_ajax_nopriv_coupon_email_customer', 'coupon_email_customer_fun' ); 
+add_action('wp_head', 'front_end_css'); 
+add_action('wp_footer', 'mini_cart_sidebar');
+add_shortcode( 'shoping-hurry', 'hurry_shoping_fun' ); 
+add_action( 'wp_ajax_update_the_cart', 'update_the_cart' );
+add_action( 'wp_ajax_nopriv_update_the_cart', 'update_the_cart' ); ?>
